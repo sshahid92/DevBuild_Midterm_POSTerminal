@@ -1,0 +1,60 @@
+ItemID,ItemName,Category,Description,Price
+0000,Beef Gallaba,Entrees,Much food very food so many food very yumyum test text place holder text.,8.99
+0001,Beef Gallaba w/Rice,Entrees,Much food very food so many food very yumyum test text place holder text.,11.00
+0002,Chicken Gallaba,Entrees,Much food very food so many food very yumyum test text place holder text.,8.99
+0003,Chicken Gallaba w/Rice,Entrees,Much food very food so many food very yumyum test text place holder text.,11.00
+0004,Vegetable Gallaba,Entrees,Much food very food so many food very yumyum test text place holder text.,8.99
+0005,Vegetable Gallaba w/Rice,Entrees,Much food very food so many food very yumyum test text place holder text.,11.00
+0006,Fish Gallaba,Entrees,Much food very food so many food very yumyum test text place holder text.,8.99
+0007,Fish Gallaba w/Rice,Entrees,Much food very food so many food very yumyum test text place holder text.,11.00
+0008,Shrimp Gallaba,Entrees,Much food very food so many food very yumyum test text place holder text.,8.99
+0009,Shrimp Gallaba w/Rice,Entrees,Much food very food so many food very yumyum test text place holder text.,11.00
+0010,Daggah (Ground Beef),Entrees,Much food very food so many food very yumyum test text place holder text.,8.99
+0011,Daggah (Ground Beef) w/Rice,Entrees,Much food very food so many food very yumyum test text place holder text.,11.00
+0012,Fattah,Entrees,Much food very food so many food very yumyum test text place holder text.,5.99
+0013,Lamb (Baked),Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,9.99
+0014,Lamb (Broiled),Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,9.99
+0015,Broiled Chicken (Half),Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,4.99
+0016,Broiled Chicken (Whole),Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,9.99
+0017,Fried Chicken,Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,6.99
+0018,Salattah,Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,5.99
+0019,Fahsaah (Meat),Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,7.99
+0020,Fahsaah (Tuna),Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,7.99
+0021,Agaddah,Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,10.99
+0022,Rice w/ Vegetables,Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,3.50
+0023,Fish,Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,10.99
+0024,Shrimp Gallaba w/Rice,Chef's Favorites,Much food very food so many food very yumyum test text place holder text.,10.99
+0025,Beef Gallaba Wrap,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,3.99
+0026,Chicken Gallaba Wrap,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,3.99
+0027,Vegetable Gallaba Wrap,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,3.99
+0028,Egg Wrap,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,2.99
+0029,Shawarma,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,3.99
+0030,Liver,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,3.99
+0031,Fassolia,Eastern Wraps,Much food very food so many food very yumyum test text place holder text.,2.99
+0032,Lamb w/ Rice & Vegetables,Yemen Café's Special,Much food very food so many food very yumyum test text place holder text.,11.99
+0033,Salattah w/ Lamb,Yemen Café's Special,Much food very food so many food very yumyum test text place holder text.,9.99
+0034,Half Chicken w/ Rice,Yemen Café's Special,Much food very food so many food very yumyum test text place holder text.,7.99
+0035,Corchorus,Yemen Café's Special,Much food very food so many food very yumyum test text place holder text.,5.99
+0036,Fassolia (White Beans),Breakfast,Much food very food so many food very yumyum test text place holder text.,5.99
+0037,Fassolia(White Beans) w/ Eggs,Breakfast,Much food very food so many food very yumyum test text place holder text.,5.99
+0038,Foul (Mashed Fava Beans),Breakfast,Much food very food so many food very yumyum test text place holder text.,5.99
+0039,Foul (Mashed Fava Beans) w/ Eggs,Breakfast,Much food very food so many food very yumyum test text place holder text.,5.99
+0040,Shak-Shoka (Scrambled Eggs),Breakfast,Much food very food so many food very yumyum test text place holder text.,3.99
+0041,Gallaba,Breakfast,Much food very food so many food very yumyum test text place holder text.,8.99
+0042,Liver,Breakfast,Much food very food so many food very yumyum test text place holder text.,7.99
+0043,Daggah (Ground Beef),Breakfast,Much food very food so many food very yumyum test text place holder text.,8.99
+0044,Veggie Mix,Breakfast,Much food very food so many food very yumyum test text place holder text.,8.99
+0045,Hommous (Small),Sides,Much food very food so many food very yumyum test text place holder text.,4.00
+0046,Hommous (Large),Sides,Much food very food so many food very yumyum test text place holder text.,6.00
+0047,Yemeni Special Salad (Small),Sides,Much food very food so many food very yumyum test text place holder text.,3.99
+0048,Yemeni Special Salad (Large),Sides,Much food very food so many food very yumyum test text place holder text.,5.99
+0049,Fattoush (Small),Sides,Much food very food so many food very yumyum test text place holder text.,4.00
+0050,Fattoush (Large),Sides,Much food very food so many food very yumyum test text place holder text.,6.00
+0051,Yemeni Bread (Large),Sides,Much food very food so many food very yumyum test text place holder text.,1.00
+0052,Broth,Drinks,Much food very food so many food very yumyum test text place holder text.,1.00
+0053,Herb Tea,Drinks,Much food very food so many food very yumyum test text place holder text.,1.00
+0054,Coffee,Drinks,Much food very food so many food very yumyum test text place holder text.,1.00
+0055,Pop,Drinks,Much food very food so many food very yumyum test text place holder text.,1.00
+0056,Fattah w/ Honey & Date,Sweets,Much food very food so many food very yumyum test text place holder text.,6.99
+0057,Fattah w/ Banana,Sweets,Much food very food so many food very yumyum test text place holder text.,5.99
+0058,Masoob,Sweets,Much food very food so many food very yumyum test text place holder text.,7.99

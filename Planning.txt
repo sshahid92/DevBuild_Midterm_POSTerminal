@@ -1,0 +1,40 @@
+1) Gather requirements
+2) Describe the app
+3) Identify the main objects
+4) Describe the interactions
+5) create a class diagram
+
+*Menu/Product*
+_productID: int
+_name: string
+_category: string
+_description: string
+_price: float
+--------------
++GetProduct(): Menu
++GetCatalog(): List<Menu> [Dictionary<Menu>?]
++SetList(List<Menu>, Menu)
+
+
+
+*Cart*
+_subtotal: float
+_grandtotal: float
+_quantity: int
+_tax: float
+---------------
++AddToCart(Cart, int quantity)
++RemoveFromCart(Menu)
++GetGrandTotal: float
++GetSubTotal: float
+
+
+*Order*
+
+
+
+*Payment*
+
+
+
+*Customer*
