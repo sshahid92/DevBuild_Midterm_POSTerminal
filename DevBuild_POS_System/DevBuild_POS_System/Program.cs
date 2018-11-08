@@ -99,16 +99,20 @@ namespace DevBuild_POS_System
                         bool isPayment = false;
                         while (!isPayment)
                         {
-                            Console.WriteLine("How would you like to pay?\n" +
+                            Console.WriteLine("How would you like to pay? (type out one of the following)\n" +
                                             "1) Cash\n" +
                                             "2) Credit\n" +
                                             "3) Check\n");
                             string paymentType = Console.ReadLine();
-                            isPayment = Enum.IsDefined(typeof(PaymentType), paymentType);
-                            if (!isPayment)
+                            isPayment = Enum.IsDefined(typeof(PaymentType), paymentType.ToLower());
+                            while (!isPayment)
                             {
                                 Console.WriteLine("Please enter a valid response.");
+                                paymentType = Console.ReadLine();
+                                isPayment = Enum.IsDefined(typeof(PaymentType), paymentType.ToLower());
                             }
+
+                            MakePayment(cart, paymentType);
                         }
                         break;
                     case 5:
@@ -120,13 +124,6 @@ namespace DevBuild_POS_System
                 }
 
             }
-            
-
-            
-            
-
-
-            Console.ReadLine();
         }
 
         static List<Cart> AddToCart(List<Cart> cart)
@@ -210,6 +207,30 @@ namespace DevBuild_POS_System
             }
             customer.RemoveFromCart(cart, cartItemNum);
             return cart;
+        }
+
+        static bool MakePayment(List<Cart> cartList, string paymentType)
+        {
+            Customer customer = new Customer();
+
+            switch (paymentType)
+            {
+                case "cash":
+                    customer.Cash(cartList);
+                    return true;
+
+                case "credit":
+                    customer.Credit(cartList);
+                    return true;
+
+                case "check":
+                    customer.Check(cartList);
+                    return true;
+
+
+                default:
+                    return false;
+            }
         }
 
     }

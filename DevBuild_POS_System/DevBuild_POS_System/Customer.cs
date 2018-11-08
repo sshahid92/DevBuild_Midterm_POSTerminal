@@ -103,36 +103,25 @@ namespace DevBuild_POS_System
             Console.WriteLine("That item is not in the cart.");
         }
 
-        public void PlaceOrder(PaymentType paymentType, double grandTotal)
-        {
-            
-            switch (paymentType)
-            {
-                case PaymentType.Cash:
-                    break;
-                case PaymentType.Credit:
-
-                    break;
-                case PaymentType.Check:
-                    break;
-                default:
-                    break;
-            }
-        }
-
+        
         public void Cash(List<Cart> cartList)
         {
             var payment = new Payment();
             double? change = null;
+            double tenderedCashAmount = 0;
+            double grandTotal = 0;
+            double subTotal = 0;
+            double tax = 0;
+
             while (change == null)
             {
                 bool isNum = false;
-                double tenderedCashAmount = 0;
-                double grandTotal = 0;
-
+                
                 foreach (var cartObject in cartList)
                 {
                     grandTotal += cartObject.GetGrandTotal();
+                    subTotal += cartObject.GetSubTotal();
+                    tax += cartObject.GetSalesTaxTotal();
                 }
 
                 while (!isNum)
@@ -143,19 +132,39 @@ namespace DevBuild_POS_System
 
                 change = payment.PayCash(grandTotal, tenderedCashAmount);
             }
-            Console.WriteLine($"Your change is {change:C}. Thank you for your order.");
+            Console.WriteLine("\tOrder Summary:\n" +
+                            $"\t\tPayment Type: Cash\n" +
+                            $"\t\tSubtotal: {subTotal:C}\n" +
+                            $"\t\tTotal tax: {tax:C}\n" +
+                            $"\t\tGrand Total: {grandTotal:C}\n" +
+                            $"\t\tTendered Cash Amount: {tenderedCashAmount:C}");
+            Console.WriteLine($"\t\tChange: {change:C}. \nThank you for your order.");
         }
 
-        public void Credit()
+        public void Credit(List<Cart> cartList)
         {
             var payment = new Payment();
             string paymentResult = "invalid";
+            int month = 0;
+            int year = 0;
+            string cvv = "";
+            double grandTotal = 0;
+            double subTotal = 0;
+            double tax = 0;
+
+            foreach (var cartObject in cartList)
+            {
+                grandTotal += cartObject.GetGrandTotal();
+                subTotal += cartObject.GetSubTotal();
+                tax += cartObject.GetSalesTaxTotal();
+            }
+
             while (paymentResult == "invalid")
             {
                 Console.Write("Enter a credit card number:");
                 string creditCardNumber = Console.ReadLine();
 
-                int month = 0;
+                
                 bool isMonth = false;
                 while (!isMonth)
                 {
@@ -163,28 +172,48 @@ namespace DevBuild_POS_System
                     isMonth = int.TryParse(Console.ReadLine(), out month);
                 }
 
-                int year = 0;
+                
                 bool isYear = false;
                 while (!isYear)
                 {
                     Console.Write("Enter expiration year:");
-                    isMonth = int.TryParse(Console.ReadLine(), out year);
+                    isYear = int.TryParse(Console.ReadLine(), out year);
                 }
 
                 Console.Write("Enter CVV:");
-                string cvv = Console.ReadLine();
+                cvv = Console.ReadLine();
 
                 paymentResult = payment.PayCredit(creditCardNumber, month, year, cvv);
-
-                Console.WriteLine($"Your {paymentResult} payment was successful. Thank you for your order");
+                if(paymentResult == "invalid")
+                {
+                    Console.WriteLine("Payment Unsuccessful");
+                }
+                
             }
+            Console.WriteLine($"\tOrder Summary:\n" +
+                            $"\t\tPayment Type: {paymentResult} Credit\n" +
+                            $"\t\tSubtotal: {subTotal:C}\n" +
+                            $"\t\tTotal tax: {tax:C}\n" +
+                            $"\t\tGrand Total: {grandTotal:C}\n" +
+                            $"Your {paymentResult} payment was successful. Thank you for your order");
 
         }
 
-        public void Check()
+        public void Check(List<Cart> cartList)
         {
             var payment = new Payment();
             string paymentResult = "invalid";
+            double grandTotal = 0;
+            double subTotal = 0;
+            double tax = 0;
+
+            foreach (var cartObject in cartList)
+            {
+                grandTotal += cartObject.GetGrandTotal();
+                subTotal += cartObject.GetSubTotal();
+                tax += cartObject.GetSalesTaxTotal();
+            }
+
             while (paymentResult == "invalid")
             {
                 Console.Write("Enter a bank account number:");
@@ -196,7 +225,17 @@ namespace DevBuild_POS_System
                 paymentResult = payment.PayCheck(accountNumber, bankRoutingNumber);
 
                 Console.WriteLine($"Your check payment was successful. Thank you for your order");
+                if (paymentResult == "invalid")
+                {
+                    Console.WriteLine("Payment Unsuccessful");
+                }
             }
+            Console.WriteLine($"\tOrder Summary:\n" +
+                            $"\t\tPayment Type: {paymentResult} Credit\n" +
+                            $"\t\tSubtotal: {subTotal:C}\n" +
+                            $"\t\tTotal tax: {tax:C}\n" +
+                            $"\t\tGrand Total: {grandTotal:C}\n" +
+                            $"Your check payment was successful. Thank you for your order");
         }
 
     }

@@ -136,7 +136,7 @@ namespace DevBuild_POS_System
 
     public enum PaymentType
     {
-        Cash, Credit, Check
+        cash, credit, check
     }
 
     
