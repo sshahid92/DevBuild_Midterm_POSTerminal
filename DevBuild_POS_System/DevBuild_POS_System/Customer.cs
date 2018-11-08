@@ -132,7 +132,7 @@ namespace DevBuild_POS_System
 
                 change = payment.PayCash(grandTotal, tenderedCashAmount);
             }
-            Console.WriteLine("\n\tOrder Summary:\n" +
+            Console.WriteLine("\n\tOrder Reciept:\n" +
                             $"\t\tPayment Type: Cash\n" +
                             $"\t\tSubtotal: {subTotal:C}\n" +
                             $"\t\tTotal tax: {tax:C}\n" +
@@ -190,7 +190,7 @@ namespace DevBuild_POS_System
                 }
                 
             }
-            Console.WriteLine($"\n\tOrder Summary:\n" +
+            Console.WriteLine($"\n\tOrder Reciept:\n" +
                             $"\t\tPayment Type: {paymentResult} Credit\n" +
                             $"\t\tSubtotal: {subTotal:C}\n" +
                             $"\t\tTotal tax: {tax:C}\n" +
@@ -230,7 +230,7 @@ namespace DevBuild_POS_System
                     Console.WriteLine("Payment Unsuccessful");
                 }
             }
-            Console.WriteLine($"\n\tOrder Summary:\n" +
+            Console.WriteLine($"\n\tOrder Reciept:\n" +
                             $"\t\tPayment Type: {paymentResult} Credit\n" +
                             $"\t\tSubtotal: {subTotal:C}\n" +
                             $"\t\tTotal tax: {tax:C}\n" +
