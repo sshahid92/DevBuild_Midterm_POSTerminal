@@ -86,8 +86,7 @@ namespace DevBuild_POS_System
             {
                 if (item.ItemID == itemID)
                 {
-                    productDetails = item;
-                    //productDetails = ($"{item.ItemID}, {item.ItemName}, {item.Description}, {item.Category}, {item.Price}"); 
+                    productDetails = item;                    
                 }
             }
             return productDetails;

@@ -30,6 +30,13 @@ namespace DevBuild_POS_System
 
         }
 
+        public int GetMenuLength()
+        {
+            var menu = new Menu();
+            int count = menu.GetMenu().Count();
+            return count;
+        }
+
         public List<Cart> CreateCart(int itemID, int quantity)
         {
             var menu = new Menu();
@@ -52,12 +59,15 @@ namespace DevBuild_POS_System
 
         public void UpdateCart(List<Cart> cartList, int itemID, int quantity)
         {
-            var menu = new Menu();
-            menu = menu.GetProductDetails(menu.GetMenu(), itemID - 1);
-            var cartObject = new Cart(menu, quantity);
-            cartList.Add(cartObject);
-            var cartItem = cartList.FirstOrDefault(x => x.Item.ItemID == itemID);
-            if (cartItem != null) cartItem.Quantity = quantity;
+            foreach (var item in cartList)
+            {
+                if (item.Item.ItemID == itemID - 1)
+                {
+                    item.Quantity = quantity;
+                    break;
+                }
+            }
+            Console.WriteLine("That item is not in the cart.");
         }
 
         public void ViewCartSummary(List<Cart> cart)
@@ -78,12 +88,19 @@ namespace DevBuild_POS_System
                             $"Grand Total: {grandTotal:C}\n");            
 
         }
-
+        
         public void RemoveFromCart(List<Cart> cartList, int itemID)
         {
-            var cartItem = cartList.SingleOrDefault(c => c.Item.ItemID == itemID);
-            if (cartItem != null)
-                cartList.Remove(cartItem);
+            itemID -= 1;
+            foreach (var item in cartList)
+            {
+                if(item.Item.ItemID == itemID)
+                {
+                    cartList.Remove(item);
+                    break;
+                }
+            }
+            Console.WriteLine("That item is not in the cart.");
         }
 
         public void PlaceOrder(PaymentType paymentType, double grandTotal)

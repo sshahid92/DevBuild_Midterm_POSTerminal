@@ -12,6 +12,10 @@ namespace DevBuild_POS_System
         public int Quantity { get; set; }
         private readonly double taxRate = 0.06;
 
+        public Cart()
+        {
+        }
+
         public Cart(Menu item, int quantity)
         {
             Item = item;
