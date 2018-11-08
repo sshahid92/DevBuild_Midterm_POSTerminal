@@ -8,35 +8,38 @@ namespace DevBuild_POS_System
 {
     class Cart
     {
-        public Menu Item { get; set; }
-        public double SubTotal { get; set; }
-        public double GrandTotal { get; set; }
-        public double Tax { get; set; }
+        public Menu Item { get; set; }        
         public int Quantity { get; set; }
+        private readonly double taxRate = 0.06;
 
         public Cart(Menu item, int quantity)
         {
             Item = item;
-            //SubTotal = subTotal;
-            //GrandTotal = grandTotal;
-            //Tax = tax;
             Quantity = quantity;
         }
 
         public double GetSubTotal()
         {
-            return SubTotal;
-        }
-
-        public double GetGrandTotal()
-        {
-            return GrandTotal;
+            double subTotal = Item.Price * Quantity;
+            return subTotal;
         }
 
         public double GetSalesTaxTotal()
         {
-            return Tax;
+            double subTotal = GetSubTotal();
+            double tax = subTotal * taxRate;
+            return tax;
         }
+
+        public double GetGrandTotal()
+        {
+            double subTotal = GetSubTotal();
+            double tax = GetSalesTaxTotal();
+            double grandTotal = subTotal + tax;
+            return grandTotal;
+        }
+
+        
 
         
 

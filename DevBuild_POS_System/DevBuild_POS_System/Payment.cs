@@ -15,17 +15,25 @@ namespace DevBuild_POS_System
             PaymentType = paymentType;
         }
 
-        public void PayCash()
+        public double? PayCash(double grandTotal, double cashAmount)
+        {
+            double change = cashAmount - grandTotal;
+            if (change >= 0)
+            {
+                return change;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void PayCredit(int creditCardNumber, DateTime expiration, int cvv, double grandTotal)
         {
 
         }
 
-        public void PayCredit()
-        {
-
-        }
-
-        public void PayCheck()
+        public void PayCheck(int accountNumber, int bankRoutingNumber, double grandTotal)
         {
 
         }

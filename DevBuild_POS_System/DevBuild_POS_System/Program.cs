@@ -25,10 +25,14 @@ namespace DevBuild_POS_System
             int.TryParse(Console.ReadLine(), out int quantity);
             var cart = customer.CreateCart(orderItemNum, quantity);
 
-            Console.WriteLine("Would you like to add anything else to your cart? (y/n)");
+            Console.WriteLine("Would you like to: (select 1, 2 or 3\n" +
+                            "1) Add to cart\n" +
+                            "2) Change quantity of an item" +
+                            "3) Remove from Cart\n" +
+                            "4) Checkout\n");
             string input = Console.ReadLine();
 
-            if(input == "y")
+            if(input == "1")
             {
                 customer.ViewMenu();
                 Console.WriteLine("Enter an item number to add it to the cart.");
@@ -39,14 +43,49 @@ namespace DevBuild_POS_System
 
                 customer.AddToCart(cart, orderItemNum, quantity);
             }
+            if (input == "2")
+            {
+                Console.WriteLine("Which cart item would you like to update? (select the ID)");
+                customer.ViewCartSummary(cart);
 
-            Console.WriteLine("Here is your cart summary:");
+                int.TryParse(Console.ReadLine(), out int cartItemNum);
+
+                Console.Write("What quantity would you like: ");
+                int.TryParse(Console.ReadLine(), out quantity);
+
+                customer.UpdateCart(cart, cartItemNum, quantity);
+                Console.WriteLine("Here is your cart summary: ");
+                customer.ViewCartSummary(cart);
+            }
+
+            if (input == "3")
+            {
+                Console.WriteLine("Which cart item would you like to remove? (select the ID)");
+                customer.ViewCartSummary(cart);
+
+                int.TryParse(Console.ReadLine(), out int cartItemNum);
+                
+                customer.RemoveFromCart(cart, cartItemNum);
+                Console.WriteLine("Here is your cart summary: ");
+                customer.ViewCartSummary(cart);
+            }
+
+            if(input == "4")
+            {
+                Console.WriteLine("How would you like to pay?\n" +
+                                "1) Cash\n" +
+                                "2) Credit\n" +
+                                "3) Check\n");
+
+            }
+
+
+            Console.WriteLine("Here is your cart summary: ");
             customer.ViewCartSummary(cart);
 
-            Console.WriteLine("Would you like to:\n" +
-                            "1) Add to cart" +
-                            "2) Remove from Cart");
             
+            
+
 
             Console.ReadLine();
         }
