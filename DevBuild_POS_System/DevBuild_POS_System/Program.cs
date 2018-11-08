@@ -44,13 +44,13 @@ namespace DevBuild_POS_System
 
             }
 
-            Console.WriteLine("Here is your cart summary: ");
+            Console.WriteLine("\nHere is your cart summary:\n ");
             customer.ViewCartSummary(cart);
 
             bool cont = true;
             while (cont)
             {
-                Console.WriteLine("\nWould you like to do: (select a number between 1-5)\n" +
+                Console.WriteLine("\nWhat would you like to do: (select a number between 1-5)\n" +
                                 "1) Add to cart\n" +
                                 "2) Change quantity of an item\n" +
                                 "3) Remove from Cart\n" +
@@ -72,37 +72,37 @@ namespace DevBuild_POS_System
                     case 1:
                         customer.ViewMenu();
                         cart = AddToCart(cart);
-                        Console.WriteLine("Here is your cart summary: ");
+                        Console.WriteLine("\nHere is your cart summary: \n");
                         customer.ViewCartSummary(cart);
                         break;
 
                     case 2:
-                        Console.WriteLine("Here is your cart summary: ");
+                        Console.WriteLine("\nHere is your cart summary: \n");
                         customer.ViewCartSummary(cart);
                         cart = UpdateCart(cart);
-                        Console.WriteLine("Here is your cart summary: ");
+                        Console.WriteLine("\nHere is your cart summary: \n");
                         customer.ViewCartSummary(cart);
                         break;
 
                     case 3:
-                        Console.WriteLine("Here is your cart summary: ");
+                        Console.WriteLine("\nHere is your cart summary: \n");
                         customer.ViewCartSummary(cart);
                         cart = RemoveCart(cart);
 
-                        Console.WriteLine("Here is your cart summary: ");
+                        Console.WriteLine("\nHere is your cart summary: \n");
                         customer.ViewCartSummary(cart);
                         break;
 
                     case 4:
-                        Console.WriteLine("Here is your cart summary: ");
+                        Console.WriteLine("\nHere is your cart summary: \n");
                         customer.ViewCartSummary(cart);
                         bool isPayment = false;
                         while (!isPayment)
                         {
-                            Console.WriteLine("How would you like to pay? (type out one of the following)\n" +
-                                            "1) Cash\n" +
-                                            "2) Credit\n" +
-                                            "3) Check\n");
+                            Console.WriteLine("\nHow would you like to pay? (type out one of the following)\n" +
+                                            "\tCash\n" +
+                                            "\tCredit\n" +
+                                            "\tCheck\n");
                             string paymentType = Console.ReadLine();
                             isPayment = Enum.IsDefined(typeof(PaymentType), paymentType.ToLower());
                             while (!isPayment)
@@ -112,15 +112,18 @@ namespace DevBuild_POS_System
                                 isPayment = Enum.IsDefined(typeof(PaymentType), paymentType.ToLower());
                             }
 
-                            MakePayment(cart, paymentType);
+                            bool paymentSuccess = MakePayment(cart, paymentType);
+                            if (paymentSuccess)
+                            {
+                                cart.Clear();
+                            }
                         }
                         break;
+
                     case 5:
                         cont = false;
                         break;
-
-                    default:
-                        break;
+                        
                 }
 
             }
@@ -226,7 +229,6 @@ namespace DevBuild_POS_System
                 case "check":
                     customer.Check(cartList);
                     return true;
-
 
                 default:
                     return false;

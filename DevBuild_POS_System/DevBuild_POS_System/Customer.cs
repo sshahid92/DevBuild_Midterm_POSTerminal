@@ -77,15 +77,15 @@ namespace DevBuild_POS_System
             double grandTotal = 0;
             foreach (var cartObject in cart)
             {
-                Console.WriteLine($"\t{cartObject.Item.ItemID + 1}. {cartObject.Item.ItemName} - {cartObject.Item.Price:C} x Quantity: {cartObject.Quantity}");
+                Console.WriteLine($"\tID: {cartObject.Item.ItemID + 1} - {cartObject.Item.ItemName} - {cartObject.Item.Price:C} x Quantity: {cartObject.Quantity}");
                 subTotal += cartObject.GetSubTotal();
                 tax += cartObject.GetSalesTaxTotal();
                 grandTotal += cartObject.GetGrandTotal();
 
             }
-            Console.WriteLine($"Subtotal: {subTotal:C}\n" +
-                            $"Total tax: {tax:C}\n" +
-                            $"Grand Total: {grandTotal:C}\n");            
+            Console.WriteLine($"\n\tSubtotal: {subTotal:C}\n" +
+                            $"\tTotal tax: {tax:C}\n" +
+                            $"\tGrand Total: {grandTotal:C}\n");            
 
         }
         
@@ -132,7 +132,7 @@ namespace DevBuild_POS_System
 
                 change = payment.PayCash(grandTotal, tenderedCashAmount);
             }
-            Console.WriteLine("\tOrder Summary:\n" +
+            Console.WriteLine("\n\tOrder Summary:\n" +
                             $"\t\tPayment Type: Cash\n" +
                             $"\t\tSubtotal: {subTotal:C}\n" +
                             $"\t\tTotal tax: {tax:C}\n" +
@@ -190,7 +190,7 @@ namespace DevBuild_POS_System
                 }
                 
             }
-            Console.WriteLine($"\tOrder Summary:\n" +
+            Console.WriteLine($"\n\tOrder Summary:\n" +
                             $"\t\tPayment Type: {paymentResult} Credit\n" +
                             $"\t\tSubtotal: {subTotal:C}\n" +
                             $"\t\tTotal tax: {tax:C}\n" +
@@ -230,7 +230,7 @@ namespace DevBuild_POS_System
                     Console.WriteLine("Payment Unsuccessful");
                 }
             }
-            Console.WriteLine($"\tOrder Summary:\n" +
+            Console.WriteLine($"\n\tOrder Summary:\n" +
                             $"\t\tPayment Type: {paymentResult} Credit\n" +
                             $"\t\tSubtotal: {subTotal:C}\n" +
                             $"\t\tTotal tax: {tax:C}\n" +

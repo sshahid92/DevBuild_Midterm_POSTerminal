@@ -42,20 +42,7 @@ namespace DevBuild_POS_System
             double grandTotal = subTotal + tax;
             return grandTotal;
         }
-
         
-
-        
-
-        public void IncreaseQuantity(int quantity)
-        {
-            Quantity += quantity;
-        }
-
-        public void DecreaseQuantity(int quantity)
-        {
-            Quantity -= quantity;
-        }
     }
 
     
