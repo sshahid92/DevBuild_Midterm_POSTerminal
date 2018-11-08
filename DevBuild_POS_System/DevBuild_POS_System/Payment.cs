@@ -21,16 +21,20 @@ namespace DevBuild_POS_System
         private readonly string _accountNumber = @"^[0-9]{10,12}$";
         private readonly string _routingNumber = @"^[0-9]{9}$";
 
-        public Payment(PaymentType paymentType)
+        public Payment()
         {
-            PaymentType = paymentType;
         }
 
-        public double? PayCash(double grandTotal, double cashAmount)
+        public double? PayCash(double grandTotal, double tenderedCashAmount)
         {
-            double change = cashAmount - grandTotal;
-            if (change >= 0)
+            if(tenderedCashAmount < grandTotal)
             {
+                Console.WriteLine("That's not enough cash, we need more!");
+                return null;
+            }
+            else if (tenderedCashAmount >= grandTotal)
+            {
+                double change = tenderedCashAmount - grandTotal;
                 return change;
             }
             else
@@ -47,11 +51,13 @@ namespace DevBuild_POS_System
                 {
                     if(Regex.IsMatch(cvv, _cvv))
                     {
-                        return "visa";
+                        return "Visa";
                     }
-                    return "Please enter a valid CVV.";
+                    Console.WriteLine("Please enter a valid CVV.");
+                    return "invalid";
                 }
-                return "Enter a valid date";
+                Console.WriteLine("Enter a valid date");
+                return "invalid";
             }
             else if (Regex.IsMatch(creditCardNumber, _mastercard))
             {
@@ -59,11 +65,13 @@ namespace DevBuild_POS_System
                 {
                     if (Regex.IsMatch(cvv, _cvv))
                     {
-                        return "mastercard";
+                        return "Mastercard";
                     }
-                    return "Please enter a valid CVV.";
+                    Console.WriteLine("Please enter a valid CVV.");
+                    return "invalid";
                 }
-                return "Enter a valid date";
+                Console.WriteLine("Enter a valid date");
+                return "invalid";
             }
             else if (Regex.IsMatch(creditCardNumber, _americanExpress))
             {
@@ -71,11 +79,13 @@ namespace DevBuild_POS_System
                 {
                     if (Regex.IsMatch(cvv, _aeCvv))
                     {
-                        return "americanexpress";
+                        return "American Express";
                     }
-                    return "Please enter a valid CVV.";
+                    Console.WriteLine("Please enter a valid CVV.");
+                    return "invalid";
                 }
-                return "Enter a valid date";
+                Console.WriteLine("Enter a valid date");
+                return "invalid";
             }
             else if (Regex.IsMatch(creditCardNumber, _discover))
             {
@@ -83,19 +93,23 @@ namespace DevBuild_POS_System
                 {
                     if (Regex.IsMatch(cvv, _cvv))
                     {
-                        return "discover";
+                        return "Discover";
                     }
-                    return "Please enter a valid CVV.";
+                    Console.WriteLine("Please enter a valid CVV.");
+                    return "invalid";
                 }
-                return "Enter a valid date";
+                Console.WriteLine("Enter a valid date");
+                return "invalid";
             }
             else if (Regex.IsMatch(creditCardNumber, _dinersClub))
             {
-                return "dinersclub";
+                Console.WriteLine("We do not except Diners Club");
+                return "invalid";
             }
             else if (Regex.IsMatch(creditCardNumber, _jcb))
             {
-                return "jcb";
+                Console.WriteLine("We do not except JCB");
+                return "invalid";
             }
             else
             {
@@ -111,9 +125,11 @@ namespace DevBuild_POS_System
                 {
                     return "checkValid";
                 }
-                return "Enter a routing number";
+                Console.WriteLine("Enter a routing number");
+                return "invalid";
             }
-            return "Enter a valid account number";
+            Console.WriteLine("Enter a valid account number");
+            return "invalid";
         }
 
     }

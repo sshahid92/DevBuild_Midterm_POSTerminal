@@ -72,13 +72,22 @@ namespace DevBuild_POS_System
 
             if(input == "4")
             {
-                Console.WriteLine("How would you like to pay?\n" +
-                                "1) Cash\n" +
-                                "2) Credit\n" +
-                                "3) Check\n");
-
+                bool isPayment = false;
+                while (!isPayment)
+                {
+                    Console.WriteLine("How would you like to pay?\n" +
+                                    "1) Cash\n" +
+                                    "2) Credit\n" +
+                                    "3) Check\n");
+                    string paymentType = Console.ReadLine();
+                    isPayment = Enum.IsDefined(typeof(PaymentType), paymentType);
+                    if(!isPayment)
+                    {
+                        Console.WriteLine("Please enter a valid response.");
+                    }
+                }
             }
-
+            
 
             Console.WriteLine("Here is your cart summary: ");
             customer.ViewCartSummary(cart);
