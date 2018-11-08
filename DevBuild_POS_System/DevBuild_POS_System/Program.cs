@@ -10,62 +10,48 @@ namespace DevBuild_POS_System
     class Program
     {
         static void Main(string[] args)
-        {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            DirectoryInfo directory = new DirectoryInfo(currentDirectory);
-            var fileName = Path.Combine(directory.FullName, "YemenCafeMenu.csv");
-            var fileContents = ReadMenu(fileName);
+        {            
+            Console.WriteLine("Welcome to Yemen Cafe!" +
+                            "\nLocated at 8740 Joseph Campau Ave, Hamtramck, MI 48212" +
+                            "\nPress enter to view our menu.");
+            Console.ReadLine();
+            var customer = new Customer();
+            customer.ViewMenu();
 
-        }
+            Console.WriteLine("What would you like to order? Enter an item number to add it to the cart.");
+            int.TryParse(Console.ReadLine(), out int orderItemNum);
 
-        //public static string ReadFile(string fileName)
-        //{
-        //    using (var reader = new StreamReader(fileName))
-        //    {
-        //        return reader.ReadToEnd();
-        //    }
+            Console.Write("What quantity would you like: ");
+            int.TryParse(Console.ReadLine(), out int quantity);
+            var cart = customer.CreateCart(orderItemNum, quantity);
 
-        //}
+            Console.WriteLine("Would you like to add anything else to your cart? (y/n)");
+            string input = Console.ReadLine();
 
-        public static List<Menu> ReadMenu(string filename)
-        {
-            var completeMenu = new List<Menu>();
-
-            using (var reader = new StreamReader(filename))
+            if(input == "y")
             {
-                string line = "";
-                reader.ReadLine();
+                customer.ViewMenu();
+                Console.WriteLine("Enter an item number to add it to the cart.");
+                int.TryParse(Console.ReadLine(), out orderItemNum);
 
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] values = line.Split(',');
-                    var menu = new Menu();
+                Console.Write("What quantity would you like: ");
+                int.TryParse(Console.ReadLine(), out quantity);
 
-                    int itemID;
-                    if (int.TryParse(values[0], out itemID))
-                    {
-                        menu.ItemID = itemID;
-                    }
-
-                    menu.ItemName = values[1];
-
-                    menu.Category = values[2];
-
-                    menu.Description = values[3];
-                    
-                    double price;
-                    if (double.TryParse(values[4], out price))
-                    {
-                        menu.Price = price;
-                    }
-
-                    completeMenu.Add(menu);
-                }
+                customer.AddToCart(cart, orderItemNum, quantity);
             }
 
-            return completeMenu;
+            Console.WriteLine("Here is your cart summary:");
+            customer.ViewCartSummary(cart);
+
+            Console.WriteLine("Would you like to:\n" +
+                            "1) Add to cart" +
+                            "2) Remove from Cart");
+            
+
+            Console.ReadLine();
         }
 
+        
 
     }
 }

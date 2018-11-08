@@ -79,14 +79,15 @@ namespace DevBuild_POS_System
         }
         #endregion
 
-        public string GetProductDetails(List<Menu> menu, int itemID)
+        public Menu GetProductDetails(List<Menu> menu, int itemID)
         {
-            string productDetails = "";
+            var productDetails = new Menu();
             foreach (var item in menu)
             {
                 if (item.ItemID == itemID)
                 {
-                    productDetails = ($"{item.ItemID}, {item.ItemName}, {item.Description}, {item.Category}, {item.Price}");                    
+                    productDetails = item;
+                    //productDetails = ($"{item.ItemID}, {item.ItemName}, {item.Description}, {item.Category}, {item.Price}"); 
                 }
             }
             return productDetails;

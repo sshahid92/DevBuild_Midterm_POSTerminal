@@ -8,18 +8,18 @@ namespace DevBuild_POS_System
 {
     class Cart
     {
-        public List<Menu> CartList { get; set; }
+        public Menu Item { get; set; }
         public double SubTotal { get; set; }
         public double GrandTotal { get; set; }
         public double Tax { get; set; }
         public int Quantity { get; set; }
 
-        public Cart(List<Menu> cartList, double subTotal, double grandTotal, double tax, int quantity)
+        public Cart(Menu item, int quantity)
         {
-            CartList = cartList;
-            SubTotal = subTotal;
-            GrandTotal = grandTotal;
-            Tax = tax;
+            Item = item;
+            //SubTotal = subTotal;
+            //GrandTotal = grandTotal;
+            //Tax = tax;
             Quantity = quantity;
         }
 
@@ -38,14 +38,7 @@ namespace DevBuild_POS_System
             return Tax;
         }
 
-        public List<Menu> GetCartList()
-        {
-            return CartList;
-        }
-
-        //figure out add to cart
-
-        //figure out remove from cart
+        
 
         public void IncreaseQuantity(int quantity)
         {
